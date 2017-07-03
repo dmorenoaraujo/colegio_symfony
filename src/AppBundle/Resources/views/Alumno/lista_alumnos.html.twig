@@ -1,0 +1,65 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}
+MORENO'S SCHOOL WEB
+{% endblock %}
+
+{% block hojas_estilo %}
+  {{ parent() }}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+{% endblock %}
+
+
+
+{% block main %}
+
+<h1>LISTADO DE ALUMNOS</h1>
+
+{#{{ dump (alumnos) }}#}
+<table id="miTabla">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Nombre</td>
+      <td>Apellidos</td>
+      <td>Curso</td>
+      <td>Actividades Extra</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+  
+
+{% for alumno in alumnos %}
+  <tr>
+    <td>{{alumno.id}}</td>
+    <td>{{alumno.nombre}}</td>
+    <td>{{alumno.apellidos}}</td>
+    <td>{{alumno.curso.nombre}}</td>
+    <td>
+      <ul>
+	{% for actividad in alumno.actividadesExtra %}
+		<li>{{actividad.nombre}}</li>
+	{% endfor %}
+      </ul>
+    </td>
+    <td>
+      <a href="{{ path ('editar_alumno', {'id':alumno.id}) }}">Editar</a>
+      <a href="{{ path ('eliminar_alumno', {'id':alumno.id}) }}">Eliminar</a>
+    </td>
+  </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#miTabla').DataTable();
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="alumno")
+ */
+class Alumno
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $apellidos;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Curso", inversedBy="alumno")
+     * @ORM\JoinColumn(name="curso_id", referencedColumnName="id")
+     */
+    protected $curso;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ActividadExtra", mappedBy="alumnos")
+     */
+    protected $actividadesExtra;
+
+    public function __construct() {
+        $this->actividadesExtra = new ArrayCollection();
+    }
+
+   
+}
+
+?>

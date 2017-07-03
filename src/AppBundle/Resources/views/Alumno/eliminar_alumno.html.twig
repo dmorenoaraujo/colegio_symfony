@@ -1,0 +1,21 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}
+MORENO'S SCHOOL WEB
+{% endblock %}
+
+{% block hojas_estilo %}
+  {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block main %}
+
+<h1>ELIMINADO EL ALUMNO {{borraralumno.nombre}} {{borraralumno.apellidos}}</h1>
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}

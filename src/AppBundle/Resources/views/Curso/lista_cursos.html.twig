@@ -1,0 +1,33 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}
+MORENO'S SCHOOL WEB
+{% endblock %}
+
+{% block hojas_estilo %}
+  {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block main %}
+
+<h1>LISTADO DE CURSOS</h1>
+
+<table>
+{% for curso in cursos %}
+  <tr>
+    <td>{{curso.id}}</td>
+    <td>{{curso.nombre}}</td>
+   
+    <td><a href="{{ path ('editar_curso', {'id':curso.id}) }}">Editar</a></td>
+    <td><a href="{{ path ('eliminar_curso', {'id':curso.id}) }}">Eliminar</a></td>
+  </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}
+MORENO'S SCHOOL WEB
+{% endblock %}
+
+{% block hojas_estilo %}
+  {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block main %}
+
+<h1>FORMULARIO DE CREACIÓN DE ALUMNO</h1>
+
+{{ form(form) }}
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
